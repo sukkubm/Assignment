@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>A/B Testing</title>
+  </head>
+  <body>
+
+    <h1>This is A/B testing page</h1>
+    <div id="app"></div>
+    <script>
+      /* sessionstorage to store the number in the session per user browser*/
+      if (!sessionStorage.randomNumber) {
+        sessionStorage.randomNumber = Math.floor(Math.random() * 100)
+      }
+      
+      (function() { // function to display groups based on odd or even number split into two groups
+          var src = sessionStorage.randomNumber % 2 ? "groupA.js" : "groupB.js";
+          document.write('<script src="./' + src + '"><\/script>');
+      })();
+    </script>
+    
+  </body>
+</html>
